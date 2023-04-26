@@ -9,8 +9,8 @@ services:
     volumes:
       - ./mongo:/mnt/mongo
       - mongodbdata:/var/lib/mongodb
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "27017/udp"
       - "27017/tcp"
@@ -27,9 +27,10 @@ services:
     environment:
       - COMPONENT_NAME=webui
     volumes:
+      - ./webui:/root
       - ./webui:/mnt/webui
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "3000/tcp"
     ports:
@@ -47,8 +48,8 @@ services:
     volumes:
       - ./nrf:/mnt/nrf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
     networks:
@@ -64,8 +65,8 @@ services:
     volumes:
       - ./scp:/mnt/scp
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
     networks:
@@ -84,8 +85,8 @@ services:
     volumes:
       - ./ausf:/mnt/ausf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
     networks:
@@ -105,8 +106,8 @@ services:
     volumes:
       - ./udr:/mnt/udr
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
     networks:
@@ -125,8 +126,8 @@ services:
     volumes:
       - ./udm:/mnt/udm
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
     networks:
@@ -146,8 +147,8 @@ services:
     volumes:
       - ./pcf:/mnt/pcf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
       - "9091/tcp"
@@ -168,8 +169,8 @@ services:
     volumes:
       - ./bsf:/mnt/bsf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
     networks:
@@ -189,8 +190,8 @@ services:
     volumes:
       - ./nssf:/mnt/nssf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "7777/tcp"
     networks:
@@ -206,8 +207,8 @@ services:
     volumes:
       - ./hss:/mnt/hss
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     depends_on:
       - mongo
     expose:
@@ -233,8 +234,8 @@ services:
     volumes:
       - ./sgwc:/mnt/sgwc
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "2123/udp"
       - "8805/udp"
@@ -254,8 +255,8 @@ services:
     volumes:
       - ./sgwu:/mnt/sgwu
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "8805/udp"
       - "2152/udp"
@@ -269,7 +270,6 @@ services:
     depends_on:
       - nrf
       - scp
-      - amf
     container_name: smf
     env_file:
       - .env
@@ -278,8 +278,8 @@ services:
     volumes:
       - ./smf:/mnt/smf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "3868/udp"
       - "3868/tcp"
@@ -306,10 +306,11 @@ services:
     environment:
       - COMPONENT_NAME=upf-1
     volumes:
+      - ./upf:/root
       - ./upf:/mnt/upf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "2152/udp"
       - "8805/udp"
@@ -328,6 +329,8 @@ services:
   amf:
     image: docker_open5gs
     depends_on:
+      - smf
+      - upf
       - nrf
       - scp
       - ausf
@@ -343,8 +346,8 @@ services:
     volumes:
       - ./amf:/mnt/amf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "38412/sctp"
       - "7777/tcp"
@@ -371,8 +374,8 @@ services:
     volumes:
       - ./mme:/mnt/mme
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "3868/udp"
       - "3868/tcp"
@@ -400,8 +403,8 @@ services:
     volumes:
       - ./pcrf:/mnt/pcrf
       - ./log:/open5gs/install/var/log/open5gs
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "3868/udp"
       - "3868/tcp"
@@ -420,8 +423,8 @@ services:
       - .env
     volumes:
       - ./dns:/mnt/dns
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "53/udp"
     networks:
@@ -436,8 +439,8 @@ services:
       - .env
     volumes:
       - ./rtpengine:/mnt/rtpengine
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     cap_add:
       - NET_ADMIN
     environment:
@@ -465,8 +468,8 @@ services:
       - .env
     volumes:
       - dbdata:/var/lib/mysql
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "3306/tcp"
     networks:
@@ -479,8 +482,8 @@ services:
     dns: ${DNS_IP}
     volumes:
       - ./fhoss:/mnt/fhoss
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     depends_on:
@@ -500,8 +503,8 @@ services:
     dns: ${DNS_IP}
     volumes:
       - ./icscf:/mnt/icscf
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     environment:
@@ -524,8 +527,8 @@ services:
     dns: ${DNS_IP}
     volumes:
       - ./scscf:/mnt/scscf
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     environment:
@@ -551,8 +554,8 @@ services:
       - NET_ADMIN
     volumes:
       - ./pcscf:/mnt/pcscf
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     environment:
@@ -590,8 +593,8 @@ services:
     dns: ${DNS_IP}
     volumes:
       - ./smsc:/mnt/smsc
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     environment:
@@ -611,8 +614,8 @@ services:
     container_name: osmomsc
     volumes:
       - ./osmomsc:/mnt/osmomsc
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     environment:
@@ -631,8 +634,8 @@ services:
     container_name: osmohlr
     volumes:
       - ./osmohlr:/mnt/osmohlr
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     environment:
@@ -650,8 +653,8 @@ services:
       - .env
     volumes:
       - ./metrics:/mnt/metrics
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     expose:
       - "9090/tcp"
     ports:
@@ -667,3 +670,4 @@ networks:
 volumes:
   mongodbdata: {}
   dbdata: {}
+
